@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>DERNREANG 2K26 | PREMIUM UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-glow: #00d2ff;
+            --secondary-glow: #9d50bb;
+            --bg-dark: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        #canvas-stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+        }
+
+        .ambient-glow {
+            position: fixed;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.07) 0%, transparent 70%);
+            top: -10%; right: -10%;
+            z-index: -1;
+            filter: blur(100px);
+            animation: floating 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes floating {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-5%, 10%); }
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 15px 30px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .badge-since {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            letter-spacing: 5px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary-glow);
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--primary-glow);
+            text-shadow: 0 0 10px var(--primary-glow);
+            box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .text-gradient {
+            background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-text {
+            font-size: clamp(14px, 2vw, 18px);
+            color: #888;
+            letter-spacing: 8px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            position: relative;
+            padding: 18px 45px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            border-color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        /* ===== CONTROLS ===== */
+        .bottom-ui {
+            position: fixed;
+            bottom: 30px;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .control-item {
+            cursor: pointer;
+            padding: 12px 25px;
+            border-radius: 12px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .control-item:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            font-size: 9px;
+            color: #444;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-stars"></canvas>
+    <div class="ambient-glow"></div>
+
+    <iframe id="yt-player" 
+        src="https://www.youtube.com/embed/bTfU8zFLj74?enablejsapi=1&mute=1&loop=1&playlist=bTfU8zFLj74&controls=0" 
+        style="display:none">
+    </iframe>
+
+    <nav class="nav-container">
+        <div class="logo">DYS SHOP</div>
+        <div style="font-size: 10px; color: #666;">UI VERSION 4.0 BY MYLISTX</div>
+    </nav>
+
+    <main>
+        <div class="badge-since">DISCORD LINK</div>
+        <h1 class="hero-title">
+            <span class="text-gradient">DYS SHOP</span>
+            <span style="color: #fff;">MYLISTX ZONE</span>
+        </h1>
+        <p class="sub-text">Digital Architecture</p>
+
+        <div class="btn-group">
+            <a href="https://mylist-dernreang.netlify.app/" target="_blank" class="btn btn-primary">ENTER PROJECT</a>
+            <a href="https://mylist-dernreang.netlify.app/" target="_blank" class="btn">PORTFOLIO</a>
+        </div>
+    </main>
+
+    <div class="bottom-ui">
+        <a href="https://www.facebook.com/ssssssz168" target="_blank" class="control-item" style="text-decoration: none; color: inherit;">
+            CONTACT
+        </a>
+        <div class="control-item" id="play-toggle">▶ UNMUTE AUDIO</div>
+    </div>
+
+    <footer>DERNYOUNGSAY SHOP | MYLISTX © 2026</footer>
+
+    <script>
+        // --- Interactive Background Script ---
+        const canvas = document.getElementById('canvas-stars');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let mouse = { x: 0, y: 0 };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            stars = [];
+            for(let i=0; i<200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#fff";
+            
+            stars.forEach(s => {
+                // Parallax effect
+                let offsetX = (mouse.x - canvas.width/2) * s.speed * 0.05;
+                let offsetY = (mouse.y - canvas.height/2) * s.speed * 0.05;
+                
+                ctx.beginPath();
+                ctx.arc(s.x + offsetX, s.y + offsetY, s.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                s.y -= s.speed;
+                if(s.y < 0) s.y = canvas.height;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        draw();
+
+        // --- Music Toggle Script ---
+        const yt = document.getElementById("yt-player");
+        const playBtn = document.getElementById("play-toggle");
+        let isPlaying = false;
+
+        playBtn.onclick = () => {
+            if(!isPlaying) {
+                yt.src = yt.src.replace("mute=1", "mute=0") + "&autoplay=1";
+                playBtn.textContent = "⏸ PAUSE AUDIO";
+                isPlaying = true;
+            } else {
+                yt.src = yt.src.replace("mute=0", "mute=1");
+                playBtn.textContent = "▶ RESUME AUDIO";
+                isPlaying = false;
+            }
+        };
+    </script>
+</body>
+</html>
